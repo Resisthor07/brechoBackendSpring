@@ -51,9 +51,10 @@ public class Cliente extends Entitty {
         bairro= ler.next();
         ler.nextLine();
         System.out.println("Gostaria de cadastrar um novo cliente?\n (S) Sim (N) Não:");
-        if(newCliente= ler.next().equals("");
+        if(newCliente= ler.next().equals(""));
         ler.nextLine();
 
+        ler.close();
     }
 
 

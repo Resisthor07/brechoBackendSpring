@@ -16,9 +16,17 @@ public class BrechoBackEndApplication {
 		Cliente cliente	= new Cliente();
 
 		System.out.println("teste");
+		boolean teste = true;
+
+		while (cliente.addCliente()){
+			System.out.println("checando");
+		}
+		for (Cliente valor: listClientes
+			 ) {
+			cliente.listaCliente(listClientes);
+		}
 
 
-		cliente.addCliente();
 
 
 

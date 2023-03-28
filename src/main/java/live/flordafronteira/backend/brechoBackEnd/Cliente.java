@@ -3,8 +3,6 @@ package live.flordafronteira.backend.brechoBackEnd;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.List;
 import java.util.Scanner;
 
 @Entity
@@ -37,9 +35,9 @@ public class Cliente extends Entitty {
     private String pontoReferencia;
 
 
-    public boolean addCliente(){
+    public void addCliente(){
         Scanner ler = new Scanner(System.in);
-        boolean addNew = false;
+        boolean newCliente = false;
         System.out.println("Informe seu nome:");
         nome= ler.next();
         ler.nextLine();
@@ -53,28 +51,9 @@ public class Cliente extends Entitty {
         bairro= ler.next();
         ler.nextLine();
         System.out.println("Gostaria de cadastrar um novo cliente?\n (S) Sim (N) Não:");
-        addNew = newCliente(ler.next());
+        if(newCliente= ler.next().equals("");
         ler.nextLine();
-        return addNew;
 
-    }
-
-    public boolean newCliente(String add){
-        if(add.equalsIgnoreCase("S")){
-            return true;
-        }else{
-            return false;
-        }
-    }
-
-    public void listaCliente(List clientes){
-        for (Object valor: clientes) {
-            System.out.println("Cliente:\n"+getNome());
-            System.out.println("email:\n"+getEmail());
-            System.out.println("Logradouro:\n"+getLogradouro());
-            System.out.println("Bairro:\n"+getBairro());
-
-        }
     }
 
 

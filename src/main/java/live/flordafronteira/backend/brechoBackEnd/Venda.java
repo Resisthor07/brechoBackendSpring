@@ -33,6 +33,7 @@ public class Venda extends Entitty{
     @Column(name = "data_da_venda", nullable = false)
     private LocalDateTime dataDaVenda;
 
+
     @Getter @Setter
     @Column(name = "confirmacao_da_venda", nullable = false)
     private boolean confirmacaoDaVenda;

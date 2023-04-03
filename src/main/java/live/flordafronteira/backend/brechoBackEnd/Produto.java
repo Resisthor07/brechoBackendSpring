@@ -1,8 +1,6 @@
 package live.flordafronteira.backend.brechoBackEnd;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,9 +17,9 @@ public class Produto extends Entitty{
     @Getter @Setter
     @Column(name = "nome", nullable = false, length = 20)
     private String nome;
-    @Getter @Setter
-    @Column(name = "tipo_produto", nullable = false)
-    private TipoProduto tipo;
+    //@Getter @Setter
+    //@JoinColumn(name = "tipo_produto", nullable = false)
+    //private TipoProduto tipo;
     @Getter @Setter
     @Column(name = "cor", length = 20)
     private String cor;
@@ -31,18 +29,18 @@ public class Produto extends Entitty{
     @Getter @Setter
     @Column(name = "valor", nullable = false)
     private BigDecimal valor;
-    @Getter @Setter
-    @Column(name = "imagem")
-    private BufferedImage imagem;
-    @Getter @Setter
-    @Column(name = "imagem_principal")
-    private BufferedImage imagemPrincipal;
+  //  @Getter @Setter
+   // @Column(name = "imagem")
+    //private BufferedImage imagem;
+    //@Getter @Setter
+    //@Column(name = "imagem_principal")
+   // private BufferedImage imagemPrincipal;
     @Getter @Setter
     @Column(name = "descricao", length = 100)
     private String descricao;
-    @Getter @Setter
-    @Column(name = "marca", length = 20)
-    private Marca marca;
+   // @Getter @Setter
+    //@JoinColumn(name = "marca")
+    //private Marca marca;
     @Getter @Setter
     @Column(name = "disponibilidade")
     private boolean disponibilidade;

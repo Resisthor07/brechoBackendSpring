@@ -3,6 +3,8 @@ package live.flordafronteira.backend.brechoBackEnd;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 @Entity
@@ -63,5 +65,11 @@ public class Cliente extends Entitty {
         }else return false;
     }
 
+        public ArrayList<Cliente> listarCliente(ArrayList<Cliente> listar){
+            for (Cliente valor:listar) {
+                System.out.println("Cliente:"+ valor.getNome() + "\nEmail:"+ valor.getEmail());
+
+            }
+        }
 
 }

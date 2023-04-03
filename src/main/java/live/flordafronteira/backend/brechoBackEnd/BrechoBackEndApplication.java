@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class BrechoBackEndApplication {
 
 
+
 	public static void main(String[] args) {
 
 
@@ -17,16 +18,19 @@ public class BrechoBackEndApplication {
 
 		ArrayList<Cliente> listClientes = new ArrayList<>();
 		Cliente cliente	= new Cliente();
-
 		System.out.println("teste");
 		boolean teste = true;
 
-		while (cliente.addCliente()){
+		while (cliente.newCliente()){
+
 			System.out.println("checando");
-			cliente.addCliente();
+
 		}
 
+
+		cliente.listarCliente(ListClientes);
 		System.out.println("Encerrando");
+
 
 
 

@@ -11,8 +11,16 @@ import java.time.LocalDateTime;
 @Table(name = "vendas",schema = "public")
 public class Venda extends Entitty{
 
+    @Getter @Setter
+    @JoinColumn(name = "produtos", nullable = false)
+    @ManyToOne
+    private Produto produtos;
 
-
+    @Getter @Setter
+    @JoinColumn(name = "clientes", nullable = false)
+    @ManyToOne
+    private Produto cliente;
+    
     @Enumerated(EnumType.STRING)
     @Getter @Setter
     @Column(name = "forma_do_pagamento", length = 15, nullable = false)
@@ -41,6 +49,5 @@ public class Venda extends Entitty{
     @Getter @Setter
     @Column(name = "confirmacao_da_entrega", nullable = false)
     private boolean confirmacaoDaEntrega;
-
 
 }

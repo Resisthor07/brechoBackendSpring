@@ -1,10 +1,10 @@
 package live.flordafronteira.backend.brechoBackEnd;
 
+import live.flordafronteira.backend.brechoBackEnd.View.Entity.Cliente;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 @SpringBootApplication
 public class BrechoBackEndApplication {
@@ -21,14 +21,14 @@ public class BrechoBackEndApplication {
 		System.out.println("teste");
 		boolean teste = true;
 
-		while (cliente.newCliente()){
+		while (cliente.addCliente()){
 
 			System.out.println("checando");
 
 		}
 
 
-		cliente.listarCliente(ListClientes);
+
 		System.out.println("Encerrando");
 
 

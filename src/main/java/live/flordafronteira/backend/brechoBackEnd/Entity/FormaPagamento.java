@@ -1,5 +1,5 @@
-package live.flordafronteira.backend.brechoBackEnd.View.Entity;
+package live.flordafronteira.backend.brechoBackEnd.Entity.Entitty;
 
 public enum FormaPagamento {
-   Vista, Pix, Parcelado
+   Vista, Pix, MercadoPago
 }

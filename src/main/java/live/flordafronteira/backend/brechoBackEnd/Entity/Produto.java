@@ -1,16 +1,14 @@
 package live.flordafronteira.backend.brechoBackEnd.View.Entity;
 
 import jakarta.persistence.*;
-import live.flordafronteira.backend.brechoBackEnd.View.Entity.Entitty;
-import live.flordafronteira.backend.brechoBackEnd.View.Entity.Marca;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 
-@Entity
+@jakarta.persistence.Entity
 @Table(name = "produto", schema = "public")
-public class Produto extends Entitty {
+public class Produto extends live.flordafronteira.backend.brechoBackEnd.View.Entity.Entity {
 
     @Getter @Setter
     @Column(name = "codigo", nullable = false, unique = true, length = 20)

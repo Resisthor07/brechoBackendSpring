@@ -2,9 +2,7 @@ package live.flordafronteira.backend.brechoBackEnd.View.Entity;
 
 import jakarta.persistence.*;
 import live.flordafronteira.backend.brechoBackEnd.View.Entity.Cliente;
-import live.flordafronteira.backend.brechoBackEnd.View.Entity.Entitty;
 import live.flordafronteira.backend.brechoBackEnd.View.Entity.FormaPagamento;
-import live.flordafronteira.backend.brechoBackEnd.View.Entity.Produto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -12,9 +10,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
+@jakarta.persistence.Entity
 @Table(name = "vendas",schema = "public")
-public class Venda extends Entitty {
+public class Venda extends live.flordafronteira.backend.brechoBackEnd.View.Entity.Entity {
     @Getter @Setter
     @JoinColumn(name="co_produto", referencedColumnName = "id")
     @ManyToMany

@@ -1,14 +1,13 @@
-package live.flordafronteira.backend.brechoBackEnd.View.Entity;
+package live.flordafronteira.backend.brechoBackEnd.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.util.Scanner;
 
 @Entity
 @Table(name = "clientes", schema = "public")
-public class Cliente extends Entitty {
+public class Cliente extends Entity {
     @Getter @Setter
     @Column(name = "nm-cliente", nullable = false, length = 150)
     private String nome;

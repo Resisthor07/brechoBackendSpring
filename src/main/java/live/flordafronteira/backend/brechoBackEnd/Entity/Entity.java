@@ -1,14 +1,13 @@
-package live.flordafronteira.backend.brechoBackEnd.View.Entity;
+package live.flordafronteira.backend.brechoBackEnd.Entity.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 @MappedSuperclass
 
-public abstract class Entitty {
+public abstract class Entity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter

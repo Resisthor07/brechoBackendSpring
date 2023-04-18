@@ -1,13 +1,15 @@
 package live.flordafronteira.backend.brechoBackEnd.Entity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Scanner;
 
+
 @Entity
 @Table(name = "clientes", schema = "public")
-public class Cliente extends Entity {
+public class Cliente extends Entidade {
     @Getter @Setter
     @Column(name = "nm-cliente", nullable = false, length = 150)
     private String nome;
@@ -15,7 +17,7 @@ public class Cliente extends Entity {
     @Column(name = "num-telefone", nullable = false)
     private String telefone;
     @Getter @Setter
-    @Column(name = "nm-email", nullable = false, length = 150)
+    @Column(name = "nm-email", nullable = false, length = 150, unique = true)
     private String email;
     @Getter @Setter
     @Column(name = "tp-logradouro", nullable = false)
@@ -31,7 +33,7 @@ public class Cliente extends Entity {
     @Column(name = "nm-bairro", nullable = false, length = 150)
     private String bairro;
     @Getter @Setter
-    @Column(name = "ds-ptreferencia", nullable = false, length = 300)
+    @Column(name = "ds-ptreferencia", length = 300)
     private String pontoReferencia;
 
 

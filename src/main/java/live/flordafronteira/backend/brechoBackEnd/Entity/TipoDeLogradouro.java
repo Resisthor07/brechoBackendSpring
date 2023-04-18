@@ -1,4 +1,4 @@
-package live.flordafronteira.backend.brechoBackEnd.View.Entity;
+package live.flordafronteira.backend.brechoBackEnd.Entity;
 
 public enum TipoDeLogradouro {
     Rua, Avenida, Travessa, Viela

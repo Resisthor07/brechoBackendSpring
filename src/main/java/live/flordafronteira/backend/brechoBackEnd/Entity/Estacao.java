@@ -1,5 +1,6 @@
 package live.flordafronteira.backend.brechoBackEnd.Entity;
 
-public enum FormaPagamento {
-   Vista, Pix, MercadoPago
+public enum Estacao {
+    Outono, Inverno, Verão, Primavera
+
 }

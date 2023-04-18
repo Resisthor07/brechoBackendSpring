@@ -1,4 +1,4 @@
-package live.flordafronteira.backend.brechoBackEnd.Entity.Entity;
+package live.flordafronteira.backend.brechoBackEnd.Entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -7,7 +7,7 @@ import lombok.Setter;
 import java.time.LocalDateTime;
 @MappedSuperclass
 
-public abstract class Entity {
+public abstract class Entidade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Getter
@@ -15,21 +15,21 @@ public abstract class Entity {
     protected Long id;
     @Getter @Setter
     @Column(name = "dt-criacao", nullable = false)
-    protected LocalDateTime criacao;
+    private LocalDateTime dataCriacao;
     @Getter @Setter
     @Column(name = "dt-atualizacao", nullable = false)
-    protected LocalDateTime edicao;
+    private LocalDateTime dataModificacao;
     @Getter @Setter
     @Column(name = "st ativo", nullable = false)
-    protected boolean ativo;
+    private boolean status;
 
     public void prePersist(){
-        this.criacao=LocalDateTime.now();
-        this.ativo=true;
+        this.dataCriacao=LocalDateTime.now();
+        this.status=true;
     }
 
     public void preUpadte(){
-        this.edicao=LocalDateTime.now();
+        this.dataModificacao=LocalDateTime.now();
     }
 
 

@@ -1,6 +1,7 @@
-package live.flordafronteira.backend.brechoBackEnd.View.Entity;
+package live.flordafronteira.backend.brechoBackEnd.Entity;
 
 import jakarta.persistence.*;
+import live.flordafronteira.backend.brechoBackEnd.Entity.Entidade;
 import live.flordafronteira.backend.brechoBackEnd.View.Entity.Cliente;
 import live.flordafronteira.backend.brechoBackEnd.View.Entity.FormaPagamento;
 import lombok.Getter;
@@ -12,7 +13,7 @@ import java.util.List;
 
 @jakarta.persistence.Entity
 @Table(name = "vendas",schema = "public")
-public class Venda extends live.flordafronteira.backend.brechoBackEnd.View.Entity.Entity {
+public class Venda extends Entidade {
     @Getter @Setter
     @JoinColumn(name="co_produto", referencedColumnName = "id")
     @ManyToMany
@@ -21,20 +22,20 @@ public class Venda extends live.flordafronteira.backend.brechoBackEnd.View.Entit
     @JoinColumn(name = "co_cliente", referencedColumnName = "id")
     @ManyToOne
     private Cliente cliente;
+    @Getter @Setter
+    @Column(name = "total", nullable = false)
+    private BigDecimal total;
     @Enumerated(EnumType.STRING)
     @Getter @Setter
     @Column(name = "forma_do_pagamento", length = 15, nullable = false)
     private FormaPagamento pagamento;
-    @Getter @Setter
-    @Column(name = "total", nullable = false)
-    private BigDecimal total;
 
     @Getter @Setter
-    @Column(name = "validacao_do_pagamento", nullable = false)
+    @Column(name = "validacao_do_pagamento")
     private boolean validacaoPagamento;
 
     @Getter @Setter
-    @Column(name = "data_da_entrega", nullable = false)
+    @Column(name = "data_da_entrega")
     private LocalDateTime dataDaEntrega;
 
     @Getter @Setter
@@ -43,11 +44,11 @@ public class Venda extends live.flordafronteira.backend.brechoBackEnd.View.Entit
 
 
     @Getter @Setter
-    @Column(name = "confirmacao_da_venda", nullable = false)
+    @Column(name = "confirmacao_da_venda")
     private boolean confirmacaoDaVenda;
 
     @Getter @Setter
-    @Column(name = "confirmacao_da_entrega", nullable = false)
+    @Column(name = "confirmacao_da_entrega")
     private boolean confirmacaoDaEntrega;
 
 

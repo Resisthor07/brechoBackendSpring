@@ -1,9 +1,9 @@
 package live.flordafronteira.backend.brechoBackEnd.Repository;
 
-import live.flordafronteira.backend.brechoBackEnd.View.Entity.TipoProduto;
+import live.flordafronteira.backend.brechoBackEnd.Entity.Tipo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface TipoProdutoRepositorio extends JpaRepository <TipoProduto, Long> {
+public interface TipoRepositorio extends JpaRepository<Tipo, Long> {
 }

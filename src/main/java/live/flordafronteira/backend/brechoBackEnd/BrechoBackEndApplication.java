@@ -1,6 +1,6 @@
 package live.flordafronteira.backend.brechoBackEnd;
 
-import live.flordafronteira.backend.brechoBackEnd.View.Entity.Cliente;
+import live.flordafronteira.backend.brechoBackEnd.Entity.Cliente;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

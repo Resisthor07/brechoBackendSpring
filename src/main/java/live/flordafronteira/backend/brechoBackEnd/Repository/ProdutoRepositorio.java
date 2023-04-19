@@ -1,6 +1,6 @@
 package live.flordafronteira.backend.brechoBackEnd.Repository;
 
-import live.flordafronteira.backend.brechoBackEnd.View.Entity.Produto;
+import live.flordafronteira.backend.brechoBackEnd.Entity.Produto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

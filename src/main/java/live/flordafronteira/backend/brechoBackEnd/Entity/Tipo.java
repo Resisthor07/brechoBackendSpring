@@ -9,11 +9,11 @@ import lombok.Setter;
 public class Tipo extends Entidade {
     @Getter @Setter
     @Enumerated(EnumType.STRING)
-    @Column(name = "genero", nullable = false)
+    @Column(name = "tp_genero", nullable = false)
     private Genero genero;
     @Getter @Setter
     @Column(name="tp_vestuario", nullable = false, length = 100)
-    private String tipovestuario;
+    private String tipoVestuario;
     @Getter @Setter
     @Enumerated(EnumType.STRING)
     @Column(name="no_estacao")

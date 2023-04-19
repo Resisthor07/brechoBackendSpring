@@ -8,29 +8,32 @@ import java.util.Scanner;
 
 
 @Entity
-@Table(name = "clientes", schema = "public")
+@Table(name = "tb_clientes", schema = "public")
 public class Cliente extends Entidade {
     @Getter @Setter
-    @Column(name = "nm-cliente", nullable = false, length = 150)
+    @Column(name = "no-cliente", nullable = false, length = 150)
     private String nome;
     @Getter @Setter
-    @Column(name = "num-telefone", nullable = false)
+    @Column(name = "num-telefone", nullable = false, length=20)
     private String telefone;
     @Getter @Setter
-    @Column(name = "nm-email", nullable = false, length = 150, unique = true)
+    @Column(name = "no-email", nullable = false, length = 150, unique = true)
     private String email;
+    @Getter @Setter
+    @Column(name = "num_cep", nullable = false, length = 10)
+    private String cep;
     @Getter @Setter
     @Column(name = "tp-logradouro", nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoDeLogradouro tipoLogradouro;
     @Getter @Setter
-    @Column(name = "nm-logradouro", nullable = false, length = 150)
+    @Column(name = "no-logradouro", nullable = false, length = 150)
     private String logradouro;
     @Getter @Setter
-    @Column(name = "num-residencia", nullable = false)
-    private int numResidencia;
+    @Column(name = "num-residencia", length=10)
+    private String numResidencia;
     @Getter @Setter
-    @Column(name = "nm-bairro", nullable = false, length = 150)
+    @Column(name = "no-bairro", nullable = false, length = 150)
     private String bairro;
     @Getter @Setter
     @Column(name = "ds-ptreferencia", length = 300)

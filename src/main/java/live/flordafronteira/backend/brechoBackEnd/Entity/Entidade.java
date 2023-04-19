@@ -14,13 +14,13 @@ public abstract class Entidade {
     @Column(name = "id", nullable = false, unique = true)
     protected Long id;
     @Getter @Setter
-    @Column(name = "dt-criacao", nullable = false)
+    @Column(name = "dt_criacao", nullable = false)
     private LocalDateTime dataCriacao;
     @Getter @Setter
-    @Column(name = "dt-atualizacao", nullable = false)
+    @Column(name = "dt_atualizacao", nullable = false)
     private LocalDateTime dataModificacao;
     @Getter @Setter
-    @Column(name = "st ativo", nullable = false)
+    @Column(name = "st_ativo", nullable = false)
     private boolean status;
 
     public void prePersist(){

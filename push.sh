@@ -1,5 +1,5 @@
 git add .
-if [ $mensagem == "" ];
+if [ mensagem == "" ];
 then
 	git commit -m "salvando"
 	echo "Tentativa de envio"

@@ -13,6 +13,7 @@ public class AdministradorController {
     @Autowired
     private AdministradorRepository administradorRepository;
 
+
     @GetMapping({"/lista"})
     public ResponseEntity<?> Listacompleta(){
 

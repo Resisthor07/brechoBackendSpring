@@ -1,4 +1,4 @@
 git add .
-git commit -m "salvando - $conteudo"
+git commit -m "salvando -- $conteudo"
 git push origin $nome
 

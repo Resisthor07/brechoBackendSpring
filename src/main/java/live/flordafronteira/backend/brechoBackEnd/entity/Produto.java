@@ -18,7 +18,7 @@ public class Produto extends Entidade {
     @Column(name = "no_produto", nullable = false, length = 30)
     private String nome;
     @Getter @Setter
-   @JoinColumn(name = "tp_produto", referencedColumnName = "id")
+   @JoinColumn(name = "co_tipo_produto", referencedColumnName = "id")
     @ManyToOne
    private Tipo tipo;
     @Getter @Setter
@@ -31,7 +31,7 @@ public class Produto extends Entidade {
     @Column(name = "vl_atual", nullable = false)
     private BigDecimal valorAtual;
     @Getter @Setter
-    @Column(name = "imagem")
+    @Column(name = "imagem")//colocar os anotation da JoinTable
     @OneToMany
     private List<Foto> fotosDoProduto;
     @Getter @Setter

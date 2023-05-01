@@ -1,4 +1,4 @@
-package live.flordafronteira.backend.brechoBackEnd.Entity;
+package live.flordafronteira.backend.brechoBackEnd.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

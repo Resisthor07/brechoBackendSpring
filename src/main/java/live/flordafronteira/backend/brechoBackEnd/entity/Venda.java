@@ -1,9 +1,6 @@
-package live.flordafronteira.backend.brechoBackEnd.Entity;
+package live.flordafronteira.backend.brechoBackEnd.entity;
 
 import jakarta.persistence.*;
-import live.flordafronteira.backend.brechoBackEnd.Entity.Entidade;
-import live.flordafronteira.backend.brechoBackEnd.Entity.Cliente;
-import live.flordafronteira.backend.brechoBackEnd.Entity.FormaPagamento;
 import lombok.Getter;
 import lombok.Setter;
 

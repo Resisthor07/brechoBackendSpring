@@ -1,11 +1,9 @@
+#!/usr/bin/bash
+BRANCH=$(git branch --show-current)
 git add .
-if [ -z "$mensagem" ];
-then
-	git commit -m "salvando"
-	echo "Tentativa de envio"
-else
-	git commit -m "salvando - $mensagem"
-	echo "Tentativa de envio realizada - $mensagem"
-fi
-git push origin $nome
+git commit -m "salvando"
+echo "Adicionando na branch $BRANCH"
+git push origin $BRANCH
+echo "Tentativa de envio realizada!"
+
 

@@ -9,7 +9,7 @@ import lombok.*;
 @Table(name = "tb_administrador", schema = "public")
 public class Administrador extends Entidade{
     @Getter @Setter
-    @Column(name = "no_adimistrador", nullable = false, unique = true, length = 100)
+    @Column(name = "no_administrador", nullable = false, unique = true, length = 100)
     private String nome;
     @Getter @Setter
     @Column(name = "no_email", nullable = false, unique = true, length = 100)

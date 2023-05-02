@@ -8,5 +8,5 @@ else
 	git commit -m "salvando - $mensagem"
 	echo "Tentativa de envio realizada - $mensagem"
 fi
-git push origin $nome
+git push origin developer
 

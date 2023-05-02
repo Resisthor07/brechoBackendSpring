@@ -1,7 +1,7 @@
 #!/usr/bin/bash
 git add .
-echo -e "Digite o nome da branch\n"
-read !BRANCH
+echo "Digite o nome da branch"
+read BRANCH
 if [ -z $MSG ];
 then
 	git commit -m "salvando"

@@ -18,9 +18,9 @@ public class Produto extends Entidade {
     @Column(name = "no_produto", nullable = false, length = 30)
     private String nome;
     @Getter @Setter
-   @JoinColumn(name = "co_tipo_produto", referencedColumnName = "id")
+    @JoinColumn(name = "co_tipo_produto", referencedColumnName = "id")
     @ManyToOne
-   private Tipo tipo;
+    private Tipo tipo;
     @Getter @Setter
     @Column(name = "no_cor", length = 50)
     private String cor;

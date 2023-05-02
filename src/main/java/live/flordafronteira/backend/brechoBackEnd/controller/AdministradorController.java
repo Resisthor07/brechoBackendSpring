@@ -27,7 +27,7 @@ public class AdministradorController {
     public ResponseEntity<?> findByRequest(@RequestParam("id")final Long id){
         final Administrador administrador = this.administradorRepository.findById(id).orElse(null);
         return administrador == null
-                ? ResponseEntity.badRequest().body("Nenhum produto encontrado!")
+                ? ResponseEntity.badRequest().body("Nenhum Usuario encontrado!")
                 : ResponseEntity.ok(administrador);
     }
 

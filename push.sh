@@ -1,3 +1,4 @@
+#!/usr/bin/bash
 git add .
 if [ -z "$mensagem" ];
 then

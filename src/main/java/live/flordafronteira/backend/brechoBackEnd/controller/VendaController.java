@@ -13,13 +13,11 @@ import org.springframework.web.bind.annotation.*;
 public class VendaController {
     @Autowired
     private VendaRepository vendaRepository;
-
     @GetMapping
     private ResponseEntity<?> getId(@RequestParam("id") final Long id) {
         final Venda vendaBanco = vendaRepository.findById(id).orElse(null);
         return ResponseEntity.ok(vendaBanco);
     }
-
     @PostMapping
     private ResponseEntity<?> postVenda(@RequestBody final Venda obj){
         try {

@@ -30,6 +30,29 @@ public class AdministradorController {
                 : ResponseEntity.ok(administrador);
     }
 
+    @PutMapping
+    public ResponseEntity<?> editar(
+            @RequestParam("id") final Long id,
+            @RequestBody final Administrador administrador){
+
+        final Administrador administradorBanco = this.administradorRepository.findById(id).orElse(null);
+        if (administradorBanco == null || administrador.getId().equals(administrador.getId())){
+            throw new RuntimeException("Não foi possivel identificar o produto informado.");
+
+        }
+
+        try {
+            this.administradorRepository.save(administrador);
+            return ResponseEntity.ok("Produto atualizado com sucesso!");
+        }
+        catch (DataIntegrityViolationException e){
+            return ResponseEntity.internalServerError().body("Error: "+ e.getCause().getCause().getMessage());
+        }
+        catch (RuntimeException e){
+            return ResponseEntity.internalServerError().body("Error: "+ e.getMessage());
+        }
+    }
+
 
 
 

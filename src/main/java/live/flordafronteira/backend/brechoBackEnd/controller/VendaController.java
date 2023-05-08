@@ -29,4 +29,6 @@ public class VendaController {
         }
         return ResponseEntity.ok(obj);
     }
+
+
 }

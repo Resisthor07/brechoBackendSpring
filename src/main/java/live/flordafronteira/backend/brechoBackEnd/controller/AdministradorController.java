@@ -54,6 +54,16 @@ public class AdministradorController {
     }
 
 
+    @PostMapping
+    public ResponseEntity<?> cadastrar (@RequestBody final Administrador administrador){
+        try{
+            this.administradorRepository.save(administrador);
+            return ResponseEntity.ok("Administrador cadastrado com sucesso!");
+
+        }catch (Exception e){
+            return ResponseEntity.badRequest().body("ERRO " + e.getMessage());
+        }
+    }
 
 
 }

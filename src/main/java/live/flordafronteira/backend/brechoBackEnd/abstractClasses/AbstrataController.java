@@ -1,11 +1,11 @@
-package live.flordafronteira.backend.brechoBackEnd.controller;
-import br.com.uniamerica.estacionamento.entity.AbstrataEntity;
-import br.com.uniamerica.estacionamento.service.AbstrataService;
+package live.flordafronteira.backend.brechoBackEnd.abstractClasses;
+
+import live.flordafronteira.backend.brechoBackEnd.entity.Entidade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-public abstract class AbstrataController<ServiceGenerica extends AbstrataService, ObjetoGenerico extends AbstrataEntity>{
+public abstract class AbstrataController<ServiceGenerica extends AbstrataService, ObjetoGenerico extends Entidade>{
     @Autowired
     private ServiceGenerica service;
 

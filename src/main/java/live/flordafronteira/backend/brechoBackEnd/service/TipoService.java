@@ -29,11 +29,11 @@ public class TipoService extends AbstrataService<TipoRepository, Tipo> {
 
     @Override
     public Tipo aplicaRegrasDeNegocio(Tipo objetoParam) {
-        return null;
+        return objetoParam;
     }
 
     @Override
     public Tipo filtraDados(Tipo objetoParam) {
-        return null;
+        return objetoParam;
     }
 }

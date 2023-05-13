@@ -4,6 +4,7 @@ package live.flordafronteira.backend.brechoBackEnd.service;
 import live.flordafronteira.backend.brechoBackEnd.abstractClasses.AbstrataService;
 import live.flordafronteira.backend.brechoBackEnd.entity.Tipo;
 import live.flordafronteira.backend.brechoBackEnd.repository.TipoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -11,6 +12,10 @@ import java.util.List;
 
 @Service
 public class TipoService extends AbstrataService<TipoRepository, Tipo> {
+
+
+    @Autowired
+    private TipoRepository tipoRepository;
 
 
     @Override
@@ -33,7 +38,7 @@ public class TipoService extends AbstrataService<TipoRepository, Tipo> {
 
     @Override
     public boolean consultaEmBancoVinculoComTabelas(Long id) {
-        return false;
+        return tipoRepository.isInProduto(id);
     }
 
     @Override

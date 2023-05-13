@@ -6,7 +6,6 @@ import live.flordafronteira.backend.brechoBackEnd.entity.Tipo;
 import live.flordafronteira.backend.brechoBackEnd.repository.TipoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
 import java.util.List;
 
@@ -43,7 +42,7 @@ public class TipoService extends AbstrataService<TipoRepository, Tipo> {
 
     @Override
     public List<Tipo> consultaEmBancoAtivos() {
-        return null;
+        return tipoRepository.findByAtivo();
     }
 
     @Override

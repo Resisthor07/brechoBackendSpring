@@ -2,6 +2,7 @@ package live.flordafronteira.backend.brechoBackEnd.controller;
 
 import live.flordafronteira.backend.brechoBackEnd.entity.Produto;
 import live.flordafronteira.backend.brechoBackEnd.repository.ProdutoRepositorio;
+import live.flordafronteira.backend.brechoBackEnd.service.ProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +15,11 @@ import java.util.List;
 @RequestMapping("/api/produto")
 public class ProdutoController {
     @Autowired
-    private ProdutoRepositorio produtoRepository;
+    private ProdutoService produtoService;
 
     @GetMapping
     public ResponseEntity<?> findByRequest(@RequestParam("id")final Long id){
-        final Produto produto = this.produtoRepository.findById(id).orElse(null);
+        final Produto produto = this.produtoService.encontrarPorId(id);
         return produto == null
                 ? ResponseEntity.badRequest().body("Nenhum produto encontrado!")
                 : ResponseEntity.ok(produto);
@@ -26,13 +27,13 @@ public class ProdutoController {
 
     @GetMapping("/lista-produtos")
     public List<Produto> findAll(){
-        return produtoRepository.findAll();
+        return produtoService.listarTodos();
     }
 
     @PostMapping
     public ResponseEntity<?> cadastrar(@RequestBody final Produto produto){
         try {
-            this.produtoRepository.save(produto);
+            this.produtoService.cadastrar(produto);
             return ResponseEntity.ok("Produto cadastrado com sucesso!");
         }
         catch (DataIntegrityViolationException e){
@@ -45,14 +46,14 @@ public class ProdutoController {
             @RequestParam("id") final Long id,
             @RequestBody final Produto produto){
 
-        final Produto produtoBanco = this.produtoRepository.findById(id).orElse(null);
+        final Produto produtoBanco = this.produtoService.encontrarPorId(id);
         if (produtoBanco == null || produto.getId().equals(produto.getId())){
             throw new RuntimeException("Não foi possivel identificar o produto informado.");
 
         }
 
         try {
-            this.produtoRepository.save(produto);
+            this.produtoService.atualizar(id, produto);
             return ResponseEntity.ok("Produto atualizado com sucesso!");
         }
         catch (DataIntegrityViolationException e){
@@ -60,6 +61,8 @@ public class ProdutoController {
         }
         catch (RuntimeException e){
             return ResponseEntity.internalServerError().body("Error: "+ e.getMessage());
+        } catch (Exception e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -67,9 +70,9 @@ public class ProdutoController {
     public ResponseEntity<?> delete(
             @RequestParam("id") final Long id
     ){
-        final Produto produtoBanco = this.produtoRepository.findById(id).orElse(null);
+        final Produto produtoBanco = this.produtoService.encontrarPorId(id);
 
-        this.produtoRepository.delete(produtoBanco);
+        this.produtoService.deletaDesativa(id);
         return ResponseEntity.ok("Produto excluido com Sucesso");
     }
 }

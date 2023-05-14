@@ -3,6 +3,8 @@ import live.flordafronteira.backend.brechoBackEnd.entity.Cliente;
 import live.flordafronteira.backend.brechoBackEnd.repository.ClienteRepositorio;
 
 
+import live.flordafronteira.backend.brechoBackEnd.service.ClienteService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -15,8 +17,10 @@ import java.util.List;
 @Controller
 @RequestMapping(value = "/api/cliente")
 public class ClienteController {
-
-    private ClienteRepositorio clienteRepositorio;
+@Autowired
+    private ClienteService clienteService;
+@Autowired
+private ClienteRepositorio clienteRepositorio;
 
    @GetMapping
     public ResponseEntity <?> buscaID(@RequestParam("id") final Long id) {
@@ -24,28 +28,27 @@ public class ClienteController {
        return valorBanco == null ? ResponseEntity.badRequest().body("Nenhum Cliente corresponde ao ID informado") :
                ResponseEntity.ok(valorBanco);
    }
+
    @GetMapping("/clientesativos")
-    public ResponseEntity<?> buscaListaClienteAtivo(){
-       List <Cliente> clientes = this.clienteRepositorio.findAll();
-       List <Cliente> checaCliente = new ArrayList<>();
-
-       for (Cliente valor:clientes
-            ) {
-           if(valor.isStatus())
-               checaCliente.add(valor);
-       }
-return ResponseEntity.ok(checaCliente);
+    public ResponseEntity<?>buscaListaClientesAtivos(){
+    return ResponseEntity.ok(this.clienteRepositorio.listaClienteAtivo());
    }
-   @GetMapping("/listaclientes")
-    ResponseEntity<?> buscaListaClientes(){
 
+
+   @GetMapping("/listaclientes")
+    public ResponseEntity<?> buscaListaClientes(){
        return ResponseEntity.ok(this.clienteRepositorio.findAll());
    }
 
    @PostMapping
-    public ResponseEntity<?> cadastraCliente(@PathVariable final Cliente cliente){
-        this.clienteRepositorio.save(cliente);
-       return ResponseEntity.ok("Cliente Cadastrado com Sucesso.");
+    public ResponseEntity<?> cadastraCliente(@RequestBody final Cliente cliente){
+        try{
+            clienteService.cadastraCliente(cliente);
+           return ResponseEntity.ok("Cliente cadastrado com sucesso");
+        }
+        catch (RuntimeException e){
+            return ResponseEntity.badRequest().body("Erro: " + e.getMessage());
+        }
    }
 
    @PutMapping("/{id}")

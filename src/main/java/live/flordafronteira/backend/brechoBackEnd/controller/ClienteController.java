@@ -56,25 +56,22 @@ private ClienteRepositorio clienteRepositorio;
             @PathVariable final Long id,
             @RequestBody final Cliente cliente){
         try {
-            final Cliente valorBanco = this.clienteRepositorio.findById(id).orElse(null);
-            if (valorBanco == null || !valorBanco.getId().equals(cliente.getId())) {
-                throw new RuntimeException("Cliente não encontrado.");
-            }
-            this.clienteRepositorio.save(cliente);
+            clienteService.atualizarCliente(id, cliente);
             return ResponseEntity.ok("Cliente Atualizado.");
         }
-        catch (DataIntegrityViolationException e){
-          return   ResponseEntity.internalServerError().body("Erro" + e.getCause().getMessage());
-        }
+
         catch (RuntimeException e){
-            return ResponseEntity.internalServerError().body("Erro");
+            return ResponseEntity.internalServerError().body("Erro: " + e.getMessage());
         }
    }
 
    @DeleteMapping("/{id}")
-    public ResponseEntity<?> DeletarCliente(@PathVariable final Long id){
-       final Cliente cliente = this.clienteRepositorio.findById(id).orElse(null);
-       return ResponseEntity.ok(cliente);
-   }
+    public ResponseEntity<?> DeletarCliente(@RequestParam("id") final Long id){
+       try{
+      clienteService.deletarCliente(id);
+      return ResponseEntity.ok("Cliente deletado.");
+   }catch (RuntimeException e){
+           return ResponseEntity.badRequest().body("Erro: " + e.getMessage());
+       }
 
 }

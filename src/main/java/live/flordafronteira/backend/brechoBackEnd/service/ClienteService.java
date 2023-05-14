@@ -3,7 +3,9 @@ package live.flordafronteira.backend.brechoBackEnd.service;
 import live.flordafronteira.backend.brechoBackEnd.abstractClasses.AbstrataService;
 import live.flordafronteira.backend.brechoBackEnd.entity.Cliente;
 import live.flordafronteira.backend.brechoBackEnd.repository.ClienteRepositorio;
+import live.flordafronteira.backend.brechoBackEnd.repository.VendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +20,8 @@ public class ClienteService extends AbstrataService<ClienteRepositorio, Cliente>
 
     @Autowired
     private ClienteRepositorio clienteRepositorio;
+    @Autowired
+    VendaRepository vendaRepository;
 
     @Transactional(rollbackFor = Exception.class)
     public void cadastraCliente(final Cliente cliente){
@@ -87,6 +91,19 @@ public class ClienteService extends AbstrataService<ClienteRepositorio, Cliente>
         }
         else {
             clienteRepositorio.save(cliente);
+        }
+    }
+
+
+    public void deletarCliente(@RequestParam("id") Long id){
+        if(!clienteRepositorio.checaId(id)){
+            throw new RuntimeException("O ID fornecido não foi localizado.");
+        }
+        if(this.vendaRepository.existsById(id)){
+            clienteRepositorio.getById(id).setStatus(false);
+           }
+        else {
+            clienteRepositorio.deleteById(id);
         }
     }
     @Override

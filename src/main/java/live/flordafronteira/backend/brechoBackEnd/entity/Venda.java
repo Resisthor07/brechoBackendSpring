@@ -39,7 +39,6 @@ public class Venda extends Entidade {
     @Column(name = "dt_venda", nullable = false)
     private LocalDateTime dataDeVenda;
 
-
     @Getter @Setter
     @Column(name = "st_venda")
     private boolean confirmacaoDaVenda;
@@ -47,6 +46,5 @@ public class Venda extends Entidade {
     @Getter @Setter
     @Column(name = "st_entrega")
     private boolean confirmacaoDaEntrega;
-
 
 }

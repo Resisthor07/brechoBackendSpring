@@ -71,6 +71,7 @@ return ResponseEntity.ok(checaCliente);
    @DeleteMapping("/{id}")
     public ResponseEntity<?> DeletarCliente(@PathVariable final Long id){
        final Cliente cliente = this.clienteRepositorio.findById(id).orElse(null);
+       return ResponseEntity.ok(cliente);
    }
 
 }

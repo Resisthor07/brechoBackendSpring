@@ -23,11 +23,13 @@ public abstract class Entidade {
     @Column(name = "st_ativo", nullable = false)
     private boolean status;
 
+    @PrePersist
     public void prePersist(){
         this.dataCriacao=LocalDateTime.now();
         this.status=true;
     }
 
+    @PreUpdate
     public void preUpadte(){
         this.dataModificacao=LocalDateTime.now();
     }

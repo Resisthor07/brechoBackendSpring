@@ -2,6 +2,8 @@ package live.flordafronteira.backend.brechoBackEnd.entity;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Scanner;
@@ -20,6 +22,8 @@ public class Cliente extends Entidade {
     private String telefone;
     @Getter @Setter
     @Column(name = "no-email", nullable = false, length = 150, unique = true)
+    @Email(message = "email inválido.")
+    @Size(max = 150, message = "O email não pode ultrpassar 150 caracteres")
     private String email;
     @Getter @Setter
     @Column(name = "num_cep", nullable = false, length = 10)
@@ -30,6 +34,7 @@ public class Cliente extends Entidade {
     private TipoDeLogradouro tipoLogradouro;
     @Getter @Setter
     @Column(name = "no-logradouro", nullable = false, length = 150)
+    @Size(min = 1, max = 150, message = "O nome do logradouro não pode ser menor que um caracter e não pode ultrapassar 150 caracteres.")
     private String logradouro;
     @Getter @Setter
     @Column(name = "num-residencia", length=10)

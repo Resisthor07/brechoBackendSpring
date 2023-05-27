@@ -5,9 +5,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import java.util.Scanner;
-
+import org.hibernate.envers.*;
 
 @Entity
+@Audited
+@AuditTable(value="audit_clientes", schema = "audit")
 @Table(name = "tb_clientes", schema = "public")
 public class Cliente extends Entidade {
     @Getter @Setter

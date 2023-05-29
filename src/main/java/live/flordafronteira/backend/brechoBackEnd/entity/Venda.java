@@ -31,25 +31,20 @@ public class Venda extends Entidade {
     @Getter @Setter
     @Column(name = "forma_do_pagamento", nullable = false)
     private FormaPagamento pagamento;
-
     @Getter @Setter
     @Column(name = "st_pagamento")
     private boolean validacaoPagamento;
-
     @Getter @Setter
     @NotNull
     @Column(name = "dt_entrega")
     private LocalDateTime dataDaEntrega;
-
     @Getter @Setter
     @NotNull
     @Column(name = "dt_venda", nullable = false)
     private LocalDateTime dataDeVenda;
-
     @Getter @Setter
     @Column(name = "st_venda")
     private boolean confirmacaoDaVenda;
-
     @Getter @Setter
     @Column(name = "st_entrega")
     private boolean confirmacaoDaEntrega;

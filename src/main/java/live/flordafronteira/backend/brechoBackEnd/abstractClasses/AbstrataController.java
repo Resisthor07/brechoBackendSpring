@@ -3,6 +3,7 @@ package live.flordafronteira.backend.brechoBackEnd.abstractClasses;
 import live.flordafronteira.backend.brechoBackEnd.entity.Entidade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 public abstract class AbstrataController<ServiceGenerica extends AbstrataService, ObjetoGenerico extends Entidade>{
@@ -37,7 +38,7 @@ public abstract class AbstrataController<ServiceGenerica extends AbstrataService
     }
 
     @PostMapping
-    public ResponseEntity<?> cadastrar(@RequestBody final ObjetoGenerico objeto){
+    public ResponseEntity<?> cadastrar(@Validated @RequestBody final ObjetoGenerico objeto){
         try {
             final String retorno = service.cadastrar(objeto);
             if (retorno.equals("salvo"))
@@ -50,7 +51,7 @@ public abstract class AbstrataController<ServiceGenerica extends AbstrataService
     }
 
     @PutMapping
-    public ResponseEntity<?> editar(@RequestParam("id") final java.lang.Long id,
+    public ResponseEntity<?> editar(@Validated @RequestParam("id") final java.lang.Long id,
                                     @RequestBody final ObjetoGenerico objeto) {
         try {
             final String retorno = service.atualizar(id, objeto);

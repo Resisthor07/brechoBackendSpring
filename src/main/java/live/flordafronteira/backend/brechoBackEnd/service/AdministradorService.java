@@ -38,7 +38,7 @@ public class AdministradorService extends AbstrataService<AdministradorRepositor
     }
 
     @Override
-    public Administrador filtraDados(Administrador objetoParam) {
-        return null;
+    public Administrador filtraDados(Administrador administrador) {
+        return administrador;
     }
 }

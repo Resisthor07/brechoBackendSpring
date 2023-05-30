@@ -51,7 +51,7 @@ public class Produto extends Entidade {
     @Getter @Setter
     @Column(name = "imagem")//colocar os anotation da JoinTable
     @OneToMany
-    @JoinTable()
+    @JoinTable(name = "foto_produto")
     private List<Foto> fotosDoProduto;
     @Getter @Setter
     @Column(name = "ds_produto", length = 500)

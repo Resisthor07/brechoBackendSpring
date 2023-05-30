@@ -24,8 +24,7 @@ public class Administrador extends Entidade{
     private String email;
     @Getter @Setter
     @Pattern(regexp = "^[a-zA-Z]{6}$", message = "LOGIN INVALIDO")
-    @Min(value = 6, message = "Numero de caracter menor que 6")
-    @Max(value = 6, message = "Numero Maximo permitido 6 caracteres")
+    @Size(min = 6, max = 6, message = "Precisa Conter somente 6 caracteres")
     @Column(name = "no_login", nullable = false, unique = true, length = 30)
     private String login;
     @Getter @Setter

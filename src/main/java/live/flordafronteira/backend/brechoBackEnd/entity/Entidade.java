@@ -17,7 +17,7 @@ public abstract class Entidade {
     @Column(name = "dt_criacao", nullable = false)
     private LocalDateTime dataCriacao;
     @Getter @Setter
-    @Column(name = "dt_atualizacao", nullable = false)
+    @Column(name = "dt_atualizacao")
     private LocalDateTime dataModificacao;
     @Getter @Setter
     @Column(name = "st_ativo", nullable = false)

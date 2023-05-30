@@ -66,12 +66,12 @@ private ClienteRepositorio clienteRepositorio;
    }
 
    @DeleteMapping("/{id}")
-    public ResponseEntity<?> DeletarCliente(@RequestParam("id") final Long id){
-       try{
-      clienteService.deletarCliente(id);
-      return ResponseEntity.ok("Cliente deletado.");
-   }catch (RuntimeException e){
+    public ResponseEntity<?> DeletarCliente(@RequestParam("id") final Long id) {
+       try {
+           clienteService.deletarCliente(id);
+           return ResponseEntity.ok("Cliente deletado.");
+       } catch (RuntimeException e) {
            return ResponseEntity.badRequest().body("Erro: " + e.getMessage());
        }
-
+   }
 }

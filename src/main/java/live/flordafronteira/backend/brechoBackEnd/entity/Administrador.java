@@ -29,7 +29,7 @@ public class Administrador extends Entidade{
     @Column(name = "no_login", nullable = false, unique = true, length = 30)
     private String login;
     @Getter @Setter
-
+    @Pattern(regexp = "^[^\\s]+$",message = "NÃO PODE CONTER ESPAÇO NA SENHA")
     @Column(name="no_senha", nullable = false, length = 100)
     private String senha;
 

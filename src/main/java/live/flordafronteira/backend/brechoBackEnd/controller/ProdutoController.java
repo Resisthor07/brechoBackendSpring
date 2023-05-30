@@ -10,4 +10,5 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/produto")
 public class ProdutoController extends AbstrataController<ProdutoService, Produto> {
+
 }

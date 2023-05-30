@@ -1,6 +1,7 @@
 package live.flordafronteira.backend.brechoBackEnd.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -15,9 +16,10 @@ public abstract class Entidade {
     protected Long id;
     @Getter @Setter
     @Column(name = "dt_criacao", nullable = false)
+    //@NotNull(message = "nao pode ser nulo.")
     private LocalDateTime dataCriacao;
     @Getter @Setter
-    @Column(name = "dt_atualizacao", nullable = false)
+    @Column(name = "dt_atualizacao")
     private LocalDateTime dataModificacao;
     @Getter @Setter
     @Column(name = "st_ativo", nullable = false)
@@ -30,7 +32,7 @@ public abstract class Entidade {
     }
 
     @PreUpdate
-    public void preUpadte(){
+    public void preUpdate(){
         this.dataModificacao=LocalDateTime.now();
     }
 

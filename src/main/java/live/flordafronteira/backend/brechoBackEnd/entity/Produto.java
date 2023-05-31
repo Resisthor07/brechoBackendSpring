@@ -32,7 +32,7 @@ public class Produto extends Entidade {
     @JoinColumn(name = "co_tipo_produto", referencedColumnName = "id")
     @ManyToOne
     @NotNull(message = "Tipo é obrigatório!")
-    @NotBlank(message = "Tipo não pode ser vazio!")
+    //@NotBlank(message = "Tipo não pode ser vazio!")
     private Tipo tipo;
     @Getter @Setter
     @Column(name = "no_cor", length = 50)
@@ -46,12 +46,12 @@ public class Produto extends Entidade {
     @Getter @Setter
     @Column(name = "vl_atual", nullable = false)
     @NotNull(message = "Valor atual é obrigatório!")
-    @NotBlank(message = "Valor atual não pode ser vazio!")
+    //@NotBlank(message = "Valor atual não pode ser vazio!")
     private BigDecimal valorAtual;
     @Getter @Setter
     @Column(name = "imagem")//colocar os anotation da JoinTable
     @OneToMany
-    @JoinTable()
+    @JoinTable(name = "foto_produto")
     private List<Foto> fotosDoProduto;
     @Getter @Setter
     @Column(name = "ds_produto", length = 500)
@@ -70,7 +70,7 @@ public class Produto extends Entidade {
     @Getter @Setter
     @Column(name = "qt-produto", nullable = false)
     @NotNull(message = "Quantidade é obrigatório!")
-    @NotBlank(message = "Quantidade não pode ser vazio!")
+    //@NotBlank(message = "Quantidade não pode ser vazio!")
     private int quantidade;
     @Getter @Setter
     @Column(name="vl_anterior")
@@ -78,7 +78,7 @@ public class Produto extends Entidade {
     @Getter @Setter
     @Column(name = "st_promocao", nullable = false)
     @NotNull(message = "Campo em promoção é obrigatório!")
-    @NotBlank(message = "Campo em promoção não pode ser vazio!")
+    //@NotBlank(message = "Campo em promoção não pode ser vazio!")
     private boolean emPromocao;
 
 }

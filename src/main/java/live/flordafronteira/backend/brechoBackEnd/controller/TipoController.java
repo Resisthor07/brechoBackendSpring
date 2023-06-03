@@ -13,8 +13,4 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(value = "/api/tipo")
 public class TipoController extends AbstrataController<TipoService, Tipo> {
 
-    @Autowired
-    private TipoRepository tipoRepositorio;
-
-
 }

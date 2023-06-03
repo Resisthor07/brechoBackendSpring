@@ -19,14 +19,7 @@ public class TipoService extends AbstrataService<TipoRepository, Tipo> {
 
     @Override
     public String validaObjeto(Tipo objetoParam) {
-        if(objetoParam.getGenero() == null)
-        {
-            return "Genero não pode ser nulo";
-        }
-        if(objetoParam.getTipoVestuario() == null)
-        {
-            return "Tipo de vestuario não pode ser nulo";
-        }
+
         if(!objetoParam.getTipoVestuario().matches("[a-zA-Z\\s]{1,100}"))
         {
             return "Problema com a formatação do tipo de vestuario";

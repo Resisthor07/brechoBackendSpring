@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 public abstract class AbstrataController<ServiceGenerica extends AbstrataService, ObjetoGenerico extends Entidade>{
     @Autowired
     private ServiceGenerica service;

@@ -21,7 +21,7 @@ public class Cliente extends Entidade {
     private String nome;
     @Getter @Setter
     @Column(name = "num-telefone", nullable = false, length=20)
-    @Pattern(regexp = "^[0-9]{2} [0-9]{4,5}-[0-9]{4}$", message = "Telefone inválido.")
+    @Pattern(regexp = "^\\([0-9]{2}\\)\\ [0-9]{4,5}-[0-9]{4}$", message = "Telefone inválido.")
     private String telefone;
     @Getter @Setter
     @Column(name = "no-email", nullable = false, length = 150, unique = true)
@@ -35,10 +35,7 @@ public class Cliente extends Entidade {
     @Column(name = "num_cep", nullable = false, length = 10)
 
     private String cep;
-    @Getter @Setter
-    @Column(name = "tp-logradouro", nullable = false)
-    @Enumerated(EnumType.STRING)
-    private TipoDeLogradouro tipoLogradouro;
+
     @Getter @Setter
     @Column(name = "no-logradouro", nullable = false, length = 150)
     @Size(min = 1, max = 150, message = "O nome do logradouro não pode ser menor que um caracter e não pode ultrapassar 150 caracteres.")

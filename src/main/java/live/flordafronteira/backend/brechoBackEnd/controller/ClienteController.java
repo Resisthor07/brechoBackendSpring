@@ -17,5 +17,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping(value = "/api/cliente")
+@CrossOrigin
 public class ClienteController extends AbstrataController<ClienteService, Cliente> {
 }

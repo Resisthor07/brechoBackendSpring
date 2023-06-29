@@ -14,12 +14,12 @@ import java.util.List;
 public class Venda extends Entidade {
     @Getter @Setter
     @NotNull
-    @JoinColumn(name="co_produto", referencedColumnName = "id", nullable = false)
-    @ManyToMany
+    @OneToMany
+    @JoinColumn(name="id_produto", referencedColumnName = "id", nullable = false)
     private List<Produto> produto;
     @Getter @Setter
     @NotNull
-    @JoinColumn(name = "co_cliente", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id", nullable = false)
     @ManyToOne
     private Cliente cliente;
     @Getter @Setter

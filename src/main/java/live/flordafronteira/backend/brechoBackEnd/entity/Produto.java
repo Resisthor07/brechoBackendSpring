@@ -12,7 +12,7 @@ import java.util.List;
 public class Produto extends Entidade {
 
     @Getter @Setter
-    @Column(name = "co_produto", nullable = false, unique = true, length = 20)
+    @Column(name = "co_produto_codigo", nullable = false, unique = true, length = 20)
     private String codigo;
     @Getter @Setter
     @Column(name = "no_produto", nullable = false, length = 30)
@@ -52,6 +52,4 @@ public class Produto extends Entidade {
     @Getter @Setter
     @Column(name = "st_promocao", nullable = false)
     private boolean emPromocao;
-
-
 }

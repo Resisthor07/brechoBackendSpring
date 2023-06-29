@@ -11,17 +11,17 @@ import org.hibernate.envers.*;
 
 @Entity
 @Audited
-@AuditTable(value="audit_clientes", schema = "audit")
+//@AuditTable(value="audit_clientes", schema = "audit")
 @Table(name = "tb_clientes", schema = "public")
 public class Cliente extends Entidade {
     @Getter @Setter
-    @Column(name = "no-cliente", nullable = false, length = 150)
+    @Column(name = "no_cliente", nullable = false, length = 150)
     private String nome;
     @Getter @Setter
-    @Column(name = "num-telefone", nullable = false, length=20)
+    @Column(name = "num_telefone", nullable = false, length=20)
     private String telefone;
     @Getter @Setter
-    @Column(name = "no-email", nullable = false, length = 150, unique = true)
+    @Column(name = "no_email", nullable = false, length = 150, unique = true)
     @Email(message = "email inválido.")
     @Size(max = 150, message = "O email não pode ultrpassar 150 caracteres")
     private String email;
@@ -29,21 +29,21 @@ public class Cliente extends Entidade {
     @Column(name = "num_cep", nullable = false, length = 10)
     private String cep;
     @Getter @Setter
-    @Column(name = "tp-logradouro", nullable = false)
+    @Column(name = "tp_logradouro", nullable = false)
     @Enumerated(EnumType.STRING)
     private TipoDeLogradouro tipoLogradouro;
     @Getter @Setter
-    @Column(name = "no-logradouro", nullable = false, length = 150)
+    @Column(name = "no_logradouro", nullable = false, length = 150)
     @Size(min = 1, max = 150, message = "O nome do logradouro não pode ser menor que um caracter e não pode ultrapassar 150 caracteres.")
     private String logradouro;
     @Getter @Setter
-    @Column(name = "num-residencia", length=10)
+    @Column(name = "num_residencia", length=10)
     private String numResidencia;
     @Getter @Setter
-    @Column(name = "no-bairro", nullable = false, length = 150)
+    @Column(name = "no_bairro", nullable = false, length = 150)
     private String bairro;
     @Getter @Setter
-    @Column(name = "ds-ptreferencia", length = 300)
+    @Column(name = "ds_ptreferencia", length = 300)
     private String pontoReferencia;
 
 

@@ -15,11 +15,11 @@ public class Venda extends Entidade {
     @Getter @Setter
     @NotNull
     @OneToMany
-    @JoinColumn(name="id_produto", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name="id_produto", referencedColumnName = "id", nullable = true)
     private List<Produto> produto;
     @Getter @Setter
     @NotNull
-    @JoinColumn(name = "id_cliente", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "id_cliente", referencedColumnName = "id", nullable = true)
     @ManyToOne
     private Cliente cliente;
     @Getter @Setter

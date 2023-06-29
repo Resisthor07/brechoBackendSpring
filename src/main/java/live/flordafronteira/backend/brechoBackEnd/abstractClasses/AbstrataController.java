@@ -2,6 +2,7 @@ package live.flordafronteira.backend.brechoBackEnd.abstractClasses;
 
 import live.flordafronteira.backend.brechoBackEnd.entity.Cliente;
 import live.flordafronteira.backend.brechoBackEnd.entity.Entidade;
+import live.flordafronteira.backend.brechoBackEnd.entity.Produto;
 import live.flordafronteira.backend.brechoBackEnd.entity.Venda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,8 @@ public abstract class AbstrataController<ServiceGenerica extends AbstrataService
     @GetMapping
     public ResponseEntity<?> findByIdMap(@RequestParam("id") final java.lang.Long id) {
         try {
-            return ResponseEntity.ok(this.service.encontrarPorId(id));
+//            return ResponseEntity.ok(this.service.encontrarPorId(id));
+            return ResponseEntity.ok(new Produto());
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }

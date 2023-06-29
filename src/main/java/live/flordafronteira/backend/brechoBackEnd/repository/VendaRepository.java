@@ -14,6 +14,6 @@ public interface VendaRepository extends JpaRepository <Venda, Long> {
     @Query(value = "SELECT p.disponibilidade FROM Produto p WHERE p.id = :id AND p.status")
     boolean verificaDisponibilidade(@Param("id") Long id);
     @Modifying
-    @Query(value = "UPDATE Produto p SET p.quantidade = (p.quantidade - :quantidade WHERE p.id = :id)")
+    @Query(value = "UPDATE Produto p SET p.quantidade = (p.quantidade - :quantidade) WHERE p.id = :id")
     void atualizaEstoqueDoProduto(@Param("id") Long id, @Param("quantidade") int quantidade);
 }

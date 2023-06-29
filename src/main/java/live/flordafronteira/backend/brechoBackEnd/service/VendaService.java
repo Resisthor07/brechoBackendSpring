@@ -40,6 +40,10 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
                                 + produto.getNome()
                                 + " nao esta disponivel.");
         }));
+        //Verifica se o valor pago pelo cliente eh maior que o valor total
+        Assert.isTrue(venda.getTotal().compareTo(venda.getDinheiroFornecidoPeloCliente()) > 0
+                && venda.isConfirmacaoDaVenda(),
+                "O valor total excede a quantia paga pelo cliente.");
         return null;
     }
 
@@ -58,6 +62,7 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
         venda.setTotal(calculaTotal(venda));
         venda.setDataDeVenda(confirmaVenda(venda));
         venda.setDataDaEntrega(confirmaEntrega(venda));
+        venda.setTrocoDoCliente(calulaTrocoDoCliente(venda));
         return venda;
     }
     @Override
@@ -65,14 +70,21 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
         return venda;
     }
     /*
+    Calcula o troco do cliente
+     */
+    public BigDecimal calulaTrocoDoCliente(Venda venda){
+        if(venda.isConfirmacaoDaVenda()){
+            return venda.getDinheiroFornecidoPeloCliente().subtract(venda.getTotal());
+        }
+        return null;
+    }
+    /*
     *Verifica se o produto ja esta com a data de entrega, caso nao estiver atribui a data atual.*/
     @Transactional
     public LocalDateTime confirmaEntrega(Venda venda){
         if(venda.isConfirmacaoDaEntrega() && venda.getDataDaEntrega() != null){
-            descontaOsProdutosDoEstoque(venda);
             return venda.getDataDaEntrega();
         } else if( venda.isConfirmacaoDaEntrega() && venda.getDataDaEntrega() == null){
-            descontaOsProdutosDoEstoque(venda);
             return LocalDateTime.now();
         }
         return null;
@@ -84,9 +96,10 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
     }
     public LocalDateTime confirmaVenda(Venda venda){
         if(venda.isConfirmacaoDaVenda() && venda.getDataDeVenda() != null){
-
+            descontaOsProdutosDoEstoque(venda);
             return venda.getDataDaEntrega();
         } else if( venda.isConfirmacaoDaVenda() && venda.getDataDeVenda() == null){
+            descontaOsProdutosDoEstoque(venda);
             return LocalDateTime.now();
         }
         return null;

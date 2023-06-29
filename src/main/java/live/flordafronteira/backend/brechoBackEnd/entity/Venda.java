@@ -42,7 +42,7 @@ public class Venda extends Entidade {
     @Getter @Setter
     @PastOrPresent(message = "A data de venda nao pode estar no futuro.")
 //    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}", message = "Formato inválido para a data de venda.")
-    @Column(name = "dt_venda", nullable = false)
+    @Column(name = "dt_venda")
     private LocalDateTime dataDeVenda;
     @Getter @Setter
     @Column(name = "st_venda")

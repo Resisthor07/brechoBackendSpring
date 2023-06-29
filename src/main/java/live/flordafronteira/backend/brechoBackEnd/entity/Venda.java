@@ -40,7 +40,6 @@ public class Venda extends Entidade {
     @Column(name = "dt_entrega")
     private LocalDateTime dataDaEntrega;
     @Getter @Setter
-    @NotNull(message = "A data de venda não pode ser nula.")
     @PastOrPresent(message = "A data de venda nao pode estar no futuro.")
 //    @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}", message = "Formato inválido para a data de venda.")
     @Column(name = "dt_venda", nullable = false)
@@ -52,4 +51,11 @@ public class Venda extends Entidade {
     @Column(name = "st_entrega")
     private boolean confirmacaoDaEntrega;
 
+    @Getter @Setter
+    @Column(name = "st_troco_cliente")
+    private BigDecimal trocoDoCliente;
+
+    @Getter @Setter
+    @Column(name = "st_dinheiro_cliente")
+    private BigDecimal dinheiroFornecidoPeloCliente;
 }

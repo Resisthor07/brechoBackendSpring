@@ -7,9 +7,11 @@ import live.flordafronteira.backend.brechoBackEnd.repository.ProdutoRepositorio;
 import live.flordafronteira.backend.brechoBackEnd.repository.VendaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -54,11 +56,40 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
     @Override
     public Venda aplicaRegrasDeNegocio(Venda venda) {
         venda.setTotal(calculaTotal(venda));
+        venda.setDataDeVenda(confirmaVenda(venda));
+        venda.setDataDaEntrega(confirmaEntrega(venda));
         return venda;
     }
     @Override
     public Venda filtraDados(Venda venda) {
         return venda;
+    }
+    /*
+    *Verifica se o produto ja esta com a data de entrega, caso nao estiver atribui a data atual.*/
+    @Transactional
+    public LocalDateTime confirmaEntrega(Venda venda){
+        if(venda.isConfirmacaoDaEntrega() && venda.getDataDaEntrega() != null){
+            descontaOsProdutosDoEstoque(venda);
+            return venda.getDataDaEntrega();
+        } else if( venda.isConfirmacaoDaEntrega() && venda.getDataDaEntrega() == null){
+            descontaOsProdutosDoEstoque(venda);
+            return LocalDateTime.now();
+        }
+        return null;
+    }
+    public void descontaOsProdutosDoEstoque(Venda venda){
+        venda.getProdutos().forEach(produto -> {
+            repository.atualizaEstoqueDoProduto(produto.getId(), produto.getQuantidade());
+        });
+    }
+    public LocalDateTime confirmaVenda(Venda venda){
+        if(venda.isConfirmacaoDaVenda() && venda.getDataDeVenda() != null){
+
+            return venda.getDataDaEntrega();
+        } else if( venda.isConfirmacaoDaVenda() && venda.getDataDeVenda() == null){
+            return LocalDateTime.now();
+        }
+        return null;
     }
     public BigDecimal calculaTotal(Venda venda){
         BigDecimal total = new BigDecimal(0);

@@ -17,10 +17,10 @@ import java.util.List;
 public class Produto extends Entidade {
 
     @Getter @Setter
-    @Column(name = "co_produto", nullable = false, unique = true, length = 20)
     @NotBlank(message = "Código não pode ser vazio!")
     @NotNull(message = "Código é obrigatório!")
     @Size(min = 1, max = 20, message = "Código não tem um tamanho valido! Min 1 e Max 20")
+    @Column(name = "co_produto_codigo", nullable = false, unique = true, length = 20)
     private String codigo;
     @Getter @Setter
     @Column(name = "no_produto", nullable = false, length = 30)
@@ -80,5 +80,4 @@ public class Produto extends Entidade {
     @NotNull(message = "Campo em promoção é obrigatório!")
     @NotBlank(message = "Campo em promoção não pode ser vazio!")
     private boolean emPromocao;
-
 }

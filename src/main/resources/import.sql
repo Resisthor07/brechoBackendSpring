@@ -1,5 +1,5 @@
 --Samir
-
+insert into tb_clientes(id, dt_criacao, dt_atualizacao, st_ativo, no-cliente, )
 --Eduardo
 <<<<<<< HEAD
 insert into tb_administrador (id, dt_criacao, dt_atualizacao, st_ativo, no_email,no_login,no_administrador,no_senha)

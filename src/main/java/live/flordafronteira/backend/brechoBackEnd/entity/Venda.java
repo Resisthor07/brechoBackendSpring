@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_vendas",schema = "public")
+@Table(name = "tb_vendas",schema = "brecho")
 public class Venda extends Entidade {
     @Getter @Setter
     @OneToMany

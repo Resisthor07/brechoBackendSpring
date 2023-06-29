@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name = "produto", schema = "public")
+@Table(name = "produto", schema = "brecho")
 public class Produto extends Entidade {
 
     @Getter @Setter
@@ -29,11 +29,11 @@ public class Produto extends Entidade {
     @Size(min = 2, max = 30, message = "Nome não tem um tamanho valido! Min 2 e Max 30")
     private String nome;
     @Getter @Setter
-    @JoinColumn(name = "co_tipo_produto", referencedColumnName = "id")
-    @ManyToOne
+   // @JoinColumn(name = "co_tipo_produto", referencedColumnName = "id")
+    //@ManyToOne
     @NotNull(message = "Tipo é obrigatório!")
     //@NotBlank(message = "Tipo não pode ser vazio!")
-    private Tipo tipo;
+    private String tipo;
     @Getter @Setter
     @Column(name = "no_cor", length = 50)
     @NotBlank(message = "Cor não pode ser vazio!")
@@ -50,9 +50,10 @@ public class Produto extends Entidade {
     private BigDecimal valorAtual;
     @Getter @Setter
     @Column(name = "imagem")//colocar os anotation da JoinTable
-    @OneToMany
-    @JoinTable(name = "foto_produto")
-    private List<Foto> fotosDoProduto;
+   // @OneToMany
+    //@JoinTable(name = "foto_produto")
+    @NotNull(message = "Valor atual é obrigatório!")
+    private String fotosDoProduto;
     @Getter @Setter
     @Column(name = "ds_produto", length = 500)
     @NotBlank(message = "Descrição não deve conter somente espaço vazio!")

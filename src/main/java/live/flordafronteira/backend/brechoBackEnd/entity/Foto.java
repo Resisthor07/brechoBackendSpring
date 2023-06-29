@@ -7,7 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name = "tb_imagens", schema="public")
+@Table(name = "tb_imagens", schema="brecho")
 public class Foto extends Entidade{
     @Getter @Setter
     @Column(name = "imagem", nullable = false, length = 500)

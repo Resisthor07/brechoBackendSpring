@@ -11,8 +11,8 @@ public abstract class AbstrataController<ServiceGenerica extends AbstrataService
     @Autowired
     private ServiceGenerica service;
 
-    @GetMapping
-    public ResponseEntity<?> findByIdMap(@RequestParam("id") final java.lang.Long id) {
+    @GetMapping("/{id}")
+    public ResponseEntity<?> findByIdMap(@PathVariable("id") final java.lang.Long id) {
         try {
             return ResponseEntity.ok(this.service.encontrarPorId(id));
         } catch (Exception e) {

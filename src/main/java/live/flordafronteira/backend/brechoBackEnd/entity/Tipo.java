@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Entity
-@Table(name= "tb_tipo", schema = "public")
+@Table(name= "tb_tipo", schema = "brecho")
 public class Tipo extends Entidade {
     @Getter @Setter
     @Enumerated(EnumType.STRING)

@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_vendas",schema = "public")
+@Table(name = "tb_vendas",schema = "brecho")
 public class Venda extends Entidade {
     @Getter @Setter
     @JoinColumn(name="co_produto", referencedColumnName = "id", nullable = false)

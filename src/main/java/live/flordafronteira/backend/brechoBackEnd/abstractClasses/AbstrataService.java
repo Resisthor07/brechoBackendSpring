@@ -30,12 +30,12 @@ public abstract class AbstrataService<Repositorio extends JpaRepository<T, Long>
         Assert.isTrue((objetosAtivos != null && !objetosAtivos.isEmpty()), "Erro, ativos nao encontrados.");
         return objetosAtivos;
     }
-    @Transactional(rollbackFor = Exception.class)
+    @Transactional//(rollbackFor = Exception.class)
     public String cadastrar(T objetoParam) {
         try {
-            String erro = validaObjeto(objetoParam);
-            Assert.isTrue(erro == null ? true : false, erro);
-            repository.save(aplicaRegrasDeNegocio(objetoParam));
+            //String erro = validaObjeto(objetoParam);
+            //Assert.isTrue(erro == null ? true : false, erro);
+            repository.save((objetoParam));
             return "salvo";
         } catch (DataIntegrityViolationException e) {
             return e.getMessage();

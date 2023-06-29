@@ -62,7 +62,6 @@ public class ClienteController {
         }
     }
 
-<<<<<<< HEAD
    @DeleteMapping("/{id}")
     public ResponseEntity<?> DeletarCliente(@RequestParam("id") final Long id) {
        try {
@@ -73,16 +72,3 @@ public class ClienteController {
        }
    }
 }
-=======
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> DeletarCliente(@RequestParam("id") final Long id) {
-        try {
-            clienteService.deletarCliente(id);
-            return ResponseEntity.ok("Cliente deletado.");
-        } catch (RuntimeException e) {
-            return ResponseEntity.badRequest().body("Erro: " + e.getMessage());
-        }
-
-    }
-}
->>>>>>> 885a22d2d5a1a4684ee6c51f870b5ab5ea906dfe

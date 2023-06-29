@@ -5,6 +5,7 @@ import live.flordafronteira.backend.brechoBackEnd.entity.Venda;
 import live.flordafronteira.backend.brechoBackEnd.repository.VendaRepository;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Service
@@ -26,11 +27,22 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
 
     @Override
     public Venda aplicaRegrasDeNegocio(Venda venda) {
-        return venda;
+        venda.setTotal(calculaTotal(venda));
+    return venda;
     }
 
     @Override
     public Venda filtraDados(Venda venda) {
         return venda;
+    }
+
+    BigDecimal calculaTotal(Venda venda){
+        BigDecimal total = new BigDecimal(0);
+        venda.getProdutos().forEach((produto -> {
+            total.add(produto
+                    .getValorAtual()
+                    .multiply(new BigDecimal(produto.getQuantidade())));
+        }));
+        return total;
     }
 }

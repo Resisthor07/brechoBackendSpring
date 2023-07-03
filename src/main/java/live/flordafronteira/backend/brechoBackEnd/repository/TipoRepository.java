@@ -10,10 +10,10 @@ import java.util.List;
 
 @Repository
 public interface TipoRepository extends JpaRepository<Tipo, Long> {
-
-    @Query("select exists (select p from Produto p where p.tipo.id = :id)")
-    boolean isInProduto(@Param("id") final Long id);
-
-    @Query("select t from Tipo t where t.status = true")
-    List<Tipo> findByAtivo();
+//
+//    @Query("select exists (select p from Produto p where p.tipo.id = :id)")
+//    boolean isInProduto(@Param("id") final Long id);
+//
+//    @Query("select t from Tipo t where t.status = true")
+//    List<Tipo> findByAtivo();
 }

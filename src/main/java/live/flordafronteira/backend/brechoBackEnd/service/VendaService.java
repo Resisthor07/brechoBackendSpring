@@ -116,6 +116,7 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
             Assert.isTrue(produtoRepositorio.existsById(produto.getId()), "O produto "
                     + produto.getNome()
                     + " nao existe no banco de dados.");
+            produto = produtoRepositorio.getById(produto.getId());
             total.add(produto
                     .getValorAtual()
                     .multiply(new BigDecimal(produto.getQuantidade())));

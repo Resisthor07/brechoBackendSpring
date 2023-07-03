@@ -32,8 +32,7 @@ public class Produto extends Entidade {
     private BigDecimal valorAtual;
     @Getter @Setter
     @Column(name = "imagem")//colocar os anotation da JoinTable
-    @OneToMany
-    private List<Foto> fotosDoProduto;
+    private String fotosDoProduto;
     @Getter @Setter
     @Column(name = "ds_produto", length = 500)
     private String descricao;

@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
+@CrossOrigin(origins = "*")
 public abstract class AbstrataController<ServiceGenerica extends AbstrataService, ObjetoGenerico extends Entidade>{
     @Autowired
-    private ServiceGenerica service;
+    protected ServiceGenerica service;
 
     @GetMapping
     public ResponseEntity<?> findByIdMap(@RequestParam("id") final java.lang.Long id) {

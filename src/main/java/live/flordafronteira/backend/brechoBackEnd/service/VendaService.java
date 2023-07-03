@@ -1,6 +1,5 @@
 package live.flordafronteira.backend.brechoBackEnd.service;
 
-import jakarta.validation.constraints.AssertFalse;
 import live.flordafronteira.backend.brechoBackEnd.abstractClasses.AbstrataService;
 import live.flordafronteira.backend.brechoBackEnd.entity.Venda;
 import live.flordafronteira.backend.brechoBackEnd.repository.ProdutoRepositorio;
@@ -13,6 +12,7 @@ import org.springframework.util.Assert;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 
 @Service
 public class VendaService extends AbstrataService<VendaRepository, Venda> {
@@ -41,9 +41,12 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
                                 + " nao esta disponivel.");
         }));
         //Verifica se o valor pago pelo cliente eh maior que o valor total
-        Assert.isTrue(venda.getTotal().compareTo(venda.getDinheiroFornecidoPeloCliente()) > 0
-                && venda.isValidacaoPagamento(),
-                "O valor total excede a quantia paga pelo cliente.");
+//        if(venda.isConfirmacaoDaVenda()){
+//            Assert.isTrue(venda.getTotal().compareTo(venda.getDinheiroFornecidoPeloCliente()) > 0
+//                            && venda.isValidacaoPagamento(),
+//                    "O valor total excede a quantia paga pelo cliente.");
+//        }
+
         return null;
     }
 
@@ -63,7 +66,9 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
         venda.setDataDeVenda(confirmaVenda(venda));
         venda.setDataDaEntrega(confirmaEntrega(venda));
         venda.setTrocoDoCliente(calulaTrocoDoCliente(venda));
-        atualizaVendaPaga(venda);
+        if(venda.isValidacaoPagamento()){
+            atualizaVendaPaga(venda);
+        }
         return venda;
     }
     @Override
@@ -75,6 +80,7 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
      */
     public BigDecimal calulaTrocoDoCliente(Venda venda){
         if(venda.isConfirmacaoDaVenda()){
+            Assert.isTrue(venda.getDinheiroFornecidoPeloCliente().subtract(venda.getTotal()).compareTo(new BigDecimal(0)) >= 0, "O valor pago deve ser igual ou superior ao valor da compra.");
             return venda.getDinheiroFornecidoPeloCliente().subtract(venda.getTotal());
         }
         return null;
@@ -111,16 +117,19 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
         }
     }
     public BigDecimal calculaTotal(Venda venda){
-        BigDecimal total = new BigDecimal(0);
+        AtomicReference<BigDecimal> total = new AtomicReference<>(new BigDecimal(0));
         venda.getProdutos().forEach((produto -> {
+            BigDecimal quantidadeVendida = new BigDecimal(produto.getQuantidadeVendida());
+            Assert.isTrue(produto.getNome() != null, "Informe o nome do produto.");
             Assert.isTrue(produtoRepositorio.existsById(produto.getId()), "O produto "
                     + produto.getNome()
                     + " nao existe no banco de dados.");
+            Assert.isTrue(produto.getQuantidadeVendida() > 0,"Informe a quantidade vendida." );
             produto = produtoRepositorio.getById(produto.getId());
-            total.add(produto
-                    .getValorAtual()
-                    .multiply(new BigDecimal(produto.getQuantidade())));
+            BigDecimal valorAtual = produto.getValorAtual();
+            total.set(valorAtual.multiply(quantidadeVendida));
+
         }));
-        return total;
+        return total.get();
     }
 }

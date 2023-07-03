@@ -52,6 +52,7 @@ public class Produto extends Entidade {
     @Getter @Setter
     @Column(name = "st_promocao", nullable = false)
     private boolean emPromocao;
-
-
+    @Getter @Setter
+    @Column(name = "qt_vendida")
+    private int quantidadeVendida;
 }

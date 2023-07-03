@@ -81,5 +81,7 @@ public class Produto extends Entidade {
     @NotNull(message = "Campo em promoção é obrigatório!")
     //@NotBlank(message = "Campo em promoção não pode ser vazio!")
     private boolean emPromocao;
-
+@Getter @Setter
+    @Column(name = "qt_vendida")
+    private int quantidadeVendida;
 }

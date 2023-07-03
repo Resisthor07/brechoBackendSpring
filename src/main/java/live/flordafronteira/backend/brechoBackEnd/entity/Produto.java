@@ -13,25 +13,25 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name = "produto", schema = "brecho")
+@Table(name = "produto", schema = "public")
 public class Produto extends Entidade {
 
     @Getter @Setter
     @Column(name = "co_produto", nullable = false, unique = true, length = 20)
-    @NotBlank(message = "Código não pode ser vazio!")
+   // @NotBlank(message = "Código não pode ser vazio!")
     @NotNull(message = "Código é obrigatório!")
     @Size(min = 1, max = 20, message = "Código não tem um tamanho valido! Min 1 e Max 20")
     private String codigo;
     @Getter @Setter
     @Column(name = "no_produto", nullable = false, length = 30)
-    @NotBlank(message = "Nome não pode ser vazio!")
+   // @NotBlank(message = "Nome não pode ser vazio!")
     @NotNull(message = "Nome é obrigatório!")
     @Size(min = 2, max = 30, message = "Nome não tem um tamanho valido! Min 2 e Max 30")
     private String nome;
     @Getter @Setter
    // @JoinColumn(name = "co_tipo_produto", referencedColumnName = "id")
     //@ManyToOne
-    @NotNull(message = "Tipo é obrigatório!")
+    //@NotNull(message = "Tipo é obrigatório!")
     //@NotBlank(message = "Tipo não pode ser vazio!")
     private String tipo;
     @Getter @Setter

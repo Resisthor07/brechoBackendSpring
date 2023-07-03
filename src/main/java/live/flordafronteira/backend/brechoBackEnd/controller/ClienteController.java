@@ -1,4 +1,5 @@
 package live.flordafronteira.backend.brechoBackEnd.controller;
+import live.flordafronteira.backend.brechoBackEnd.abstractClasses.AbstrataController;
 import live.flordafronteira.backend.brechoBackEnd.entity.Cliente;
 import live.flordafronteira.backend.brechoBackEnd.repository.ClienteRepositorio;
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 @RestController
 @RequestMapping("/api/produto")
+@CrossOrigin(origins = "http://localhost:8081/")
 public class ProdutoController extends AbstrataController<ProdutoService, Produto> {
 
 }

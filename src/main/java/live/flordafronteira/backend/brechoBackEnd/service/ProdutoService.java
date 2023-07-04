@@ -20,9 +20,6 @@ public class ProdutoService extends AbstrataService <ProdutoRepositorio, Produto
 
     @Override
     public String validaObjeto(Produto objetoParam) {
-        if (!tipoRepository.existsById(objetoParam.getTipo().getId())){
-            throw new RuntimeException("Tipo informado não existe!");
-        }
         return null;
     }
 

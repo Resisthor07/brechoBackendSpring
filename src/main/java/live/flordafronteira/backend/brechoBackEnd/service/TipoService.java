@@ -37,7 +37,8 @@ public class TipoService extends AbstrataService<TipoRepository, Tipo> {
 
     @Override
     public boolean consultaEmBancoVinculoComTabelas(Long id) {
-        return tipoRepository.isInProduto(id);
+//        return tipoRepository.isInProduto(id);
+        return true;
     }
 
     @Override

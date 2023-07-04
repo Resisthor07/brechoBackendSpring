@@ -39,7 +39,7 @@ public class Produto extends Entidade {
     @NotBlank(message = "Cor não pode ser vazio!")
     private String cor;
     @Getter @Setter
-    @Column(name = "no_tamanho", nullable = false, length = 5)
+    @Column(name = "no_tamanho", nullable = false, length = 20)
     @NotNull(message = "Tamanho é obrigatório!")
     @NotBlank(message = "Tamanho não pode ser vazio!")
     private String tamanho;
@@ -49,15 +49,15 @@ public class Produto extends Entidade {
     //@NotBlank(message = "Valor atual não pode ser vazio!")
     private BigDecimal valorAtual;
     @Getter @Setter
-    @Column(name = "imagem")//colocar os anotation da JoinTable
+    @Column(name = "imagem", length = 3000)//colocar os anotation da JoinTable
    // @OneToMany
     //@JoinTable(name = "foto_produto")
     @NotNull(message = "Valor atual é obrigatório!")
     private String fotosDoProduto;
     @Getter @Setter
-    @Column(name = "ds_produto", length = 500)
+    @Column(name = "ds_produto", length = 5000)
     @NotBlank(message = "Descrição não deve conter somente espaço vazio!")
-    @Size(min = 2, max = 500, message = "Descrição ultrapassou a quantidade de caracteres validos! Max 500")
+    @Size(min = 2, max = 5000, message = "Descrição ultrapassou a quantidade de caracteres validos! Max 500")
     private String descricao;
     @Getter @Setter
     @Column(name = "no_marca", nullable = false, length=100)

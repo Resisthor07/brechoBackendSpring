@@ -43,6 +43,19 @@ public abstract class AbstrataService<Repositorio extends JpaRepository<T, Long>
             return e.getMessage();
         }
     }
+
+    @Transactional//(rollbackFor = Exception.class)
+    public String cadastrarCliente(T objetoParam) {
+        try {
+            //String erro = validaObjeto(objetoParam);
+            //Assert.isTrue(erro == null ? true : false, erro);
+            repository.save((objetoParam));
+            return objetoParam.getId().toString();
+        } catch (DataIntegrityViolationException e) {
+            return e.getMessage();
+        }
+    }
+
     @Transactional(rollbackFor = Exception.class)
     public String atualizar(Long id, T objeto) throws Exception {
         if(id != objeto.getId())

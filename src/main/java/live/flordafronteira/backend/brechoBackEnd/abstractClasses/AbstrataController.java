@@ -51,6 +51,19 @@ public abstract class AbstrataController<ServiceGenerica extends AbstrataService
         }
     }
 
+    @PostMapping("/addCliente")
+    public ResponseEntity<?> cadastrarCliente(@Validated @RequestBody final ObjetoGenerico objeto){
+        try {
+            final String retorno = service.cadastrarCliente(objeto);
+            if (!retorno.isEmpty())
+                return ResponseEntity.ok(retorno);
+            else
+                throw new IllegalArgumentException(retorno);
+        }catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
     @PutMapping
     public ResponseEntity<?> editar(@Validated @RequestParam("id") final java.lang.Long id,
                                     @RequestBody final ObjetoGenerico objeto) {

@@ -1,6 +1,5 @@
 package live.flordafronteira.backend.brechoBackEnd.controller;
 import live.flordafronteira.backend.brechoBackEnd.abstractClasses.AbstrataController;
-import live.flordafronteira.backend.brechoBackEnd.abstractClasses.AbstrataService;
 import live.flordafronteira.backend.brechoBackEnd.entity.Cliente;
 import live.flordafronteira.backend.brechoBackEnd.repository.ClienteRepositorio;
 
@@ -21,21 +20,6 @@ import java.util.List;
 @RequestMapping(value = "/api/cliente")
 @CrossOrigin
 public class ClienteController extends AbstrataController<ClienteService, Cliente> {
-    private ClienteService service;
-
-
-    @Override
-    public ResponseEntity<?> cadastrar(@Validated @RequestBody final Cliente objeto){
-        try {
-            final String retorno = service.cadastrar(objeto);
-            if (retorno.equals("salvo"))
-                return ResponseEntity.ok(objeto.getId());
-            else
-                throw new IllegalArgumentException(retorno);
-        }catch (IllegalArgumentException e) {
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
-    }
 
 
 }

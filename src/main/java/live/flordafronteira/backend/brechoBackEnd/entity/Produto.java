@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
-@Table(name = "produto", schema = "brecho")
+@Table(name = "produto", schema = "public")
 public class Produto extends Entidade {
 
     @Getter @Setter
@@ -81,5 +81,7 @@ public class Produto extends Entidade {
     @NotNull(message = "Campo em promoção é obrigatório!")
     //@NotBlank(message = "Campo em promoção não pode ser vazio!")
     private boolean emPromocao;
-
+@Getter @Setter
+    @Column(name = "qt_vendida")
+    private int quantidadeVendida;
 }

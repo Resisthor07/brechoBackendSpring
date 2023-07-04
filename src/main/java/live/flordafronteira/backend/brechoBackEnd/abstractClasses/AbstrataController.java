@@ -1,6 +1,9 @@
 package live.flordafronteira.backend.brechoBackEnd.abstractClasses;
 
+import live.flordafronteira.backend.brechoBackEnd.entity.Cliente;
 import live.flordafronteira.backend.brechoBackEnd.entity.Entidade;
+import live.flordafronteira.backend.brechoBackEnd.entity.Tipo;
+import live.flordafronteira.backend.brechoBackEnd.entity.Venda;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;

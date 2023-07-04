@@ -27,11 +27,8 @@ public class AdministradorService extends AbstrataService<AdministradorRepositor
     }
     @Override
     public String validaObjeto(Administrador administrador) {
-        if (administrador.getNome() == null) {
-            return "NOME NULO";
-        } else if (administrador.getEmail() == null) {
-            return "EMAIL NULO";
-        } else if (administrador.getLogin() == null) {
+
+         if (administrador.getLogin() == null) {
             return "LOGIN NULO";
         } else if (administrador.getSenha() == null) {
             return "SENHA NULA";

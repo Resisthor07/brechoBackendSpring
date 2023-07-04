@@ -10,7 +10,7 @@ import org.hibernate.envers.*;
 
 @Entity
 @Audited
-@AuditTable(value="audit_clientes", schema = "audit")
+//@AuditTable(value="audit_clientes", schema = "audit")
 @Table(name = "tb_clientes", schema = "brecho")
 public class Cliente extends Entidade {
     @Getter @Setter

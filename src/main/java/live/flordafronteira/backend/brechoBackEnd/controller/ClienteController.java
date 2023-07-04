@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,4 +20,6 @@ import java.util.List;
 @RequestMapping(value = "/api/cliente")
 @CrossOrigin
 public class ClienteController extends AbstrataController<ClienteService, Cliente> {
+
+
 }

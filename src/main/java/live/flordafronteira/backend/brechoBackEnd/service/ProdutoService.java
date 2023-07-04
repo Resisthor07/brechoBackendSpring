@@ -36,11 +36,11 @@ public class ProdutoService extends AbstrataService <ProdutoRepositorio, Produto
 
     @Override
     public Produto aplicaRegrasDeNegocio(Produto objetoParam) {
-        return null;
+        return objetoParam;
     }
 
     @Override
     public Produto filtraDados(Produto objetoParam) {
-        return null;
+        return objetoParam;
     }
 }

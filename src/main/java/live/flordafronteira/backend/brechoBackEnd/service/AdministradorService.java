@@ -39,8 +39,7 @@ public class AdministradorService extends AbstrataService<AdministradorRepositor
 
     @Override
     public boolean consultaEmBancoVinculoComTabelas(Long id) {
-        // Implemente a lógica de consulta em banco de dados aqui
-        // Verifique se existem vínculos nas tabelas relacionadas ao administrador com o ID fornecido
+
         return false;
     }
 
@@ -51,14 +50,12 @@ public class AdministradorService extends AbstrataService<AdministradorRepositor
 
     @Override
     public Administrador aplicaRegrasDeNegocio(Administrador administrador) {
-        // Implemente as regras de negócio específicas para administradores aqui
         return administrador;
     }
 
     @Override
     public Administrador filtraDados(Administrador administrador) {
-        // Implemente a lógica de filtragem de dados aqui
-        // Se necessário, filtre e ajuste os dados do administrador antes de serem retornados
+
         return administrador;
     }
 }

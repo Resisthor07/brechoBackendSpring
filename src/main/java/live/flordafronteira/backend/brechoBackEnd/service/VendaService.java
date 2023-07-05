@@ -62,14 +62,14 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
 
     @Override
     public Venda aplicaRegrasDeNegocio(Venda venda) {
-        venda.setTotal(calculaTotal(venda));
-        venda.setDataDeVenda(confirmaVenda(venda));
-        venda.setDataDaEntrega(confirmaEntrega(venda));
-        venda.setTrocoDoCliente(calulaTrocoDoCliente(venda));
-        if(venda.isValidacaoPagamento()){
-            atualizaVendaPaga(venda);
-        }
-        return venda;
+//        venda.setTotal(calculaTotal(venda));
+//        venda.setDataDeVenda(confirmaVenda(venda));
+//        venda.setDataDaEntrega(confirmaEntrega(venda));
+//        venda.setTrocoDoCliente(calulaTrocoDoCliente(venda));
+//        if(venda.isValidacaoPagamento()){
+//            atualizaVendaPaga(venda);
+//        }
+        return null;
     }
     @Override
     public Venda filtraDados(Venda venda) {
@@ -116,20 +116,20 @@ public class VendaService extends AbstrataService<VendaRepository, Venda> {
             repository.save(venda);
         }
     }
-    public BigDecimal calculaTotal(Venda venda){
-        AtomicReference<BigDecimal> total = new AtomicReference<>(new BigDecimal(0));
-        venda.getProdutos().forEach((produto -> {
-            BigDecimal quantidadeVendida = new BigDecimal(produto.getQuantidadeVendida());
-            Assert.isTrue(produto.getNome() != null, "Informe o nome do produto.");
-            Assert.isTrue(produtoRepositorio.existsById(produto.getId()), "O produto "
-                    + produto.getNome()
-                    + " nao existe no banco de dados.");
-            Assert.isTrue(produto.getQuantidadeVendida() > 0,"Informe a quantidade vendida." );
-            produto = produtoRepositorio.getById(produto.getId());
-            BigDecimal valorAtual = produto.getValorAtual();
-            total.set(valorAtual.multiply(quantidadeVendida));
-
-        }));
-        return total.get();
-    }
+//    public BigDecimal calculaTotal(Venda venda){
+//        AtomicReference<BigDecimal> total = new AtomicReference<>(new BigDecimal(0));
+//        venda.getProdutos().forEach((produto -> {
+//            BigDecimal quantidadeVendida = new BigDecimal(produto.getQuantidadeVendida());
+//            Assert.isTrue(produto.getNome() != null, "Informe o nome do produto.");
+//            Assert.isTrue(produtoRepositorio.existsById(produto.getId()), "O produto "
+//                    + produto.getNome()
+//                    + " nao existe no banco de dados.");
+//            Assert.isTrue(produto.getQuantidadeVendida() > 0,"Informe a quantidade vendida." );
+//            produto = produtoRepositorio.getById(produto.getId());
+//            BigDecimal valorAtual = produto.getValorAtual();
+//            total.set(valorAtual.multiply(quantidadeVendida));
+//
+//        }));
+//        return total.get();
+    //}
 }
